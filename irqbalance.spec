@@ -1,6 +1,6 @@
 %define name	irqbalance
 %define version	0.55
-%define release	1mdk
+%define release	%mkrel 1
 
 
 Summary:	Daemon to balance irq's across multiple CPUs.
