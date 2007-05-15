@@ -22,9 +22,7 @@ Daemon to balance irq's across multiple CPUs on systems with
 the 2.4 or 2.6 kernel. Only useful on SMP systems.
 
 %prep
-#%setup -q -n %name-
 %setup -q
-#%patch1 -p0
 
 %build
 %make
