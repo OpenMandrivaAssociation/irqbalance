@@ -1,6 +1,6 @@
 %define name	irqbalance
 %define version	0.55
-%define release	%mkrel 1
+%define release	%mkrel 2
 
 
 Summary:	Daemon to balance irq's across multiple CPUs.
@@ -15,7 +15,7 @@ Source1:	%name.init
 Source2:	%name.sysconfig
 BuildRoot:      %_tmppath/%name-%version-buildroot
 PreReq:		rpm-helper
-BuildRequires: 	gccmakedep
+BuildRequires: 	gccmakedep glib2-devel
 
 %description
 Daemon to balance irq's across multiple CPUs on systems with
