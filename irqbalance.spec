@@ -1,6 +1,6 @@
 %define name	irqbalance
 %define version	0.55
-%define release	%mkrel 2
+%define release	%mkrel 3
 
 
 Summary:	Daemon to balance irq's across multiple CPUs.
@@ -9,7 +9,7 @@ Version:	%version
 Release:	%release
 License:	Open Software License
 Group:		System/Kernel and hardware
-URL:            http://people.redhat.com/arjanv/irqbalance/
+URL:            http://irqbalance.org/
 Source0:        %name-%version.tar.bz2
 Source1:	%name.init
 Source2:	%name.sysconfig
