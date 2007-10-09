@@ -3,7 +3,7 @@
 %define release	%mkrel 3
 
 
-Summary:	Daemon to balance irq's across multiple CPUs.
+Summary:	Daemon to balance irq's across multiple CPUs
 Name:		%name
 Version:	%version
 Release:	%release
