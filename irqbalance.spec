@@ -14,7 +14,7 @@ Source0:	http://www.irqbalance.org/releases/%name-%version.tar.bz2
 Source1:	%name.init
 Source2:	%name.sysconfig
 BuildRoot:      %_tmppath/%name-%version-buildroot
-PreReq:		rpm-helper
+Requires(post,preun):		rpm-helper
 BuildRequires: 	gccmakedep glib2-devel
 
 %description
