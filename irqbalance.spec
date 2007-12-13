@@ -13,8 +13,8 @@ Requires(post,preun):		rpm-helper
 BuildRequires: 	gccmakedep glib2-devel
 
 %description
-Daemon to balance irq's across multiple CPUs on systems with
-the 2.4 or 2.6 kernel. Only useful on SMP systems.
+irqbalance is a daemon that evenly distributes IRQ load across
+multiple CPUs for enhanced performance.
 
 %prep
 %setup -q
