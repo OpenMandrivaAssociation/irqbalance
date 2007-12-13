@@ -1,8 +1,8 @@
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
 Version:	0.55
-Release:	%mkrel 3
-License:	Open Software License
+Release:	%mkrel 4
+License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:            http://irqbalance.org/
 Source0:	http://www.irqbalance.org/releases/%name-%version.tar.bz2
