@@ -10,7 +10,7 @@ Release:	%release
 License:	Open Software License
 Group:		System/Kernel and hardware
 URL:            http://irqbalance.org/
-Source0:        %name-%version.tar.bz2
+Source0:	http://www.irqbalance.org/releases/%name-%version.tar.bz2
 Source1:	%name.init
 Source2:	%name.sysconfig
 BuildRoot:      %_tmppath/%name-%version-buildroot
