@@ -13,6 +13,7 @@ Source3:	irqbalance.1
 Patch0: irqbalance-pie.patch
 Patch1: irqbalance-0.55-cputree-parse.patch
 Patch2: irqbalance-0.55-pid-file.patch
+BuildRoot:      %_tmppath/%name-%version-buildroot
 Requires(post,preun):		rpm-helper
 BuildRequires: 	gccmakedep glib2-devel
 
