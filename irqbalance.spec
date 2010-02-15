@@ -1,7 +1,7 @@
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
 Version:	0.55
-Release:	%mkrel 7
+Release:	%mkrel 8
 License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:            http://irqbalance.org/
@@ -13,22 +13,32 @@ Source3:	irqbalance.1
 Patch0: irqbalance-pie.patch
 Patch1: irqbalance-0.55-cputree-parse.patch
 Patch2: irqbalance-0.55-pid-file.patch
+# (fc) 0.55-8mdv enable libcap-ng support (Fedora)
+Patch3: irqbalance-0.55-config-capng.patch
 BuildRoot:      %_tmppath/%name-%version-buildroot
 Requires(post,preun):		rpm-helper
-BuildRequires: 	gccmakedep glib2-devel
+BuildRequires: gccmakedep
+BuildRequires: glib2-devel
+BuildRequires: libcap-ng-devel
 
 %description
 irqbalance is a daemon that evenly distributes IRQ load across
 multiple CPUs for enhanced performance.
 
 %prep
-%setup -q
+%setup -q 
 
 #%patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1 -b .libcap-ng
+
+#needed by patch3
+touch NEWS README AUTHORS ChangeLog
+autoreconf -i
 
 %build
+%configure
 %make
 
 
@@ -57,5 +67,5 @@ if [ -d $RPM_BUILD_ROOT ]; then rm -r $RPM_BUILD_ROOT; fi
 %defattr(-,root,root)
 %_mandir/man1/*
 %_sbindir/*
-%config(noreplace) %{_initrddir}/*
+%{_initrddir}/*
 %config(noreplace) %{_sysconfdir}/sysconfig/*
