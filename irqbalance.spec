@@ -1,7 +1,7 @@
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
 Version:	0.55
-Release:	%mkrel 8
+Release:	%mkrel 9
 License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:            http://irqbalance.org/
@@ -30,7 +30,7 @@ multiple CPUs for enhanced performance.
 
 #%patch0 -p1
 %patch1 -p1
-%patch2 -p1
+%patch2 -p2
 %patch3 -p1 -b .libcap-ng
 
 #needed by patch3
