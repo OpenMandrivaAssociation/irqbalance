@@ -33,9 +33,7 @@ multiple CPUs for enhanced performance.
 #%patch0 -p1
 %patch1 -p1
 %patch2 -p2
-%if %mdkversion >= 201010
 %patch3 -p1 -b .libcap-ng
-%endif
 
 #needed by patch3
 touch NEWS README AUTHORS ChangeLog
