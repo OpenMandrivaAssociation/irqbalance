@@ -1,11 +1,11 @@
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
-Version:	1.0
+Version:	1.0.2
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:		http://irqbalance.org/
-Source0:	http://irqbalance.googlecode.com/files/%{name}-%{version}.tbz2
+Source0:	http://irqbalance.googlecode.com/files/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	irqbalance.1
@@ -23,7 +23,7 @@ irqbalance is a daemon that evenly distributes IRQ load across
 multiple CPUs for enhanced performance.
 
 %prep
-%setup -q -n %{name}
+%setup -q -n %{name}-%{version}
 touch NEWS README AUTHORS ChangeLog
 
 %build
