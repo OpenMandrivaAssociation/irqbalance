@@ -1,6 +1,6 @@
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
-Version:	1.0.2
+Version:	1.0.3
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		System/Kernel and hardware
@@ -23,24 +23,27 @@ irqbalance is a daemon that evenly distributes IRQ load across
 multiple CPUs for enhanced performance.
 
 %prep
-%setup -q -n %{name}-%{version}
-touch NEWS README AUTHORS ChangeLog
+%setup -q
 
 %build
-./autogen.sh
+%configure2_5x \
+	--disable-static
 
-%configure2_5x
 %make
 
 %install
 rm -rf %{buildroot}
+install -D -p -m 0755 %{name} %{buildroot}%{_sbindir}/%{name}
+install -D -p -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
+install -d %{buildroot}%{_mandir}/man1/
+install -p -m 0644 ./irqbalance.1 %{buildroot}%{_mandir}/man1/
 
-mkdir -p %{buildroot}{%{_sbindir},%{_mandir}/man1}
-install irqbalance %{buildroot}%{_sbindir}
-mkdir -p %{buildroot}{%{_initrddir},%{_sysconfdir}/sysconfig}
+%if %mdkver >= 201100
+install -D -p -m 0644 ./misc/irqbalance.service %{buildroot}%{_unitdir}/irqbalance.service
+%else
+mkdir -p %{buildroot}%{_initrddir}
 install %{SOURCE1} %{buildroot}%{_initrddir}/irqbalance
-install %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/irqbalance
-install %{SOURCE3} %{buildroot}%{_mandir}/man1/
+%endif
 
 %clean
 rm -rf %{buildroot}
@@ -54,7 +57,12 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
+%doc AUTHORS
 %{_mandir}/man1/*
 %{_sbindir}/*
+%if %mdkver >= 201100
+%{_unitdir}/%{name}.service
+%else
 %{_initrddir}/*
+%endif
 %config(noreplace) %{_sysconfdir}/sysconfig/*
