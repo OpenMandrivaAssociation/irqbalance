@@ -1,11 +1,11 @@
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
-Version:	1.0.3
+Version:	1.0.4
 Release:	%mkrel 1
 License:	GPLv2+
 Group:		System/Kernel and hardware
 URL:		http://irqbalance.org/
-Source0:	http://irqbalance.googlecode.com/files/%{name}-%{version}.tar.gz
+Source0:	http://irqbalance.googlecode.com/files/%{name}-%{version}.tar.bz2
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 Source3:	irqbalance.1
@@ -16,7 +16,6 @@ BuildRequires:	glib2-devel
 %if %mdkversion >= 201010
 BuildRequires:	libcap-ng-devel
 %endif
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 irqbalance is a daemon that evenly distributes IRQ load across
@@ -44,9 +43,6 @@ install -D -p -m 0644 ./misc/irqbalance.service %{buildroot}%{_unitdir}/irqbalan
 mkdir -p %{buildroot}%{_initrddir}
 install %{SOURCE1} %{buildroot}%{_initrddir}/irqbalance
 %endif
-
-%clean
-rm -rf %{buildroot}
 
 %post
 %_post_service irqbalance
