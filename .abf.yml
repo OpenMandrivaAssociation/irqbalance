@@ -1,0 +1,5 @@
+sources:
+  "irqbalance.1:"	4528254f24e847085638795f51614daf4b257d59
+  "irqbalance-1.0.4.tar.bz2:"	01ad859a1eb0266e4ccbcffd7990a729c2befedb
+  "irqbalance.init:"	e403014be0619cb01614989b68b008f2df1ba3b4
+  "irqbalance.sysconfig:"	aeecc2caa3471797d4da1954dc12762ccdb6a100
