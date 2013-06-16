@@ -1,3 +1,4 @@
----
-sources:
+removed_sources:
   irqbalance-1.0.5.tar.gz: 765768fea012a80ba68bcf718a9d1106f6023e28
+sources:
+  irqbalance-1.0.6.tar.gz: 7710acc8c28ed6ee5ce388760562b47089761601
