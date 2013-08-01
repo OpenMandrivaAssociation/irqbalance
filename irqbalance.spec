@@ -8,7 +8,9 @@ Url:		http://irqbalance.org/
 Source0:	http://irqbalance.googlecode.com/files/%{name}-%{version}.tar.gz
 Source2:	%{name}.sysconfig
 BuildRequires:	gccmakedep
-BuildRequires:	numa-devel
+%ifnarch %arm
+BuildRequires	numa-devel
+%endif
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libcap-ng)
 Requires(post,preun):	rpm-helper
@@ -49,4 +51,3 @@ install -D -p -m 0644 ./misc/irqbalance.service %{buildroot}%{_unitdir}/irqbalan
 %{_sbindir}/*
 %{_unitdir}/%{name}.service
 %{_mandir}/man1/*
-
