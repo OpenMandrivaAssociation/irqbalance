@@ -8,7 +8,7 @@ Url:		http://irqbalance.org/
 Source0:	http://irqbalance.googlecode.com/files/%{name}-%{version}.tar.bz2
 Source1:	%{name}.sysconfig
 BuildRequires:	gccmakedep
-%ifnarch %{arm}
+%ifnarch %{armx}
 BuildRequires:	numa-devel
 %endif
 BuildRequires:	pkgconfig(glib-2.0)
@@ -40,7 +40,7 @@ multiple CPUs for enhanced performance.
 sed -i 's|EnvironmentFile=.*|EnvironmentFile=/etc/sysconfig/irqbalance|' misc/irqbalance.service
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static
 
 %make
