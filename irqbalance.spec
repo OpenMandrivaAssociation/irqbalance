@@ -5,7 +5,7 @@ Release:	0.1
 License:	GPLv2+
 Group:		System/Kernel and hardware
 Url:		http://irqbalance.org/
-Source0:	https://codeload.github.com/Irqbalance/irqbalance/tar.gz/v%{name}-%{version}.tar.bz2
+Source0:	https://codeload.github.com/Irqbalance/irqbalance/tar.gz/%{name}-%{version}.tar.bz2
 Source1:	%{name}.sysconfig
 BuildRequires:	gccmakedep
 %ifnarch %{armx}
