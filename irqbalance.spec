@@ -30,6 +30,7 @@ multiple CPUs for enhanced performance.
 
 %prep
 %setup -q
+./autogen.sh
 
 # (tpg) fix path
 sed -i 's|EnvironmentFile=.*|EnvironmentFile=/etc/sysconfig/irqbalance|' misc/irqbalance.service
