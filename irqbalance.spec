@@ -1,3 +1,5 @@
+%define _disable_ld_no_undefined 1
+
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
 Version:	1.0.9
