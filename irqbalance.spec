@@ -2,7 +2,7 @@
 
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
-Version:	1.0.9
+Version:	1.1.0
 Release:	0.1
 License:	GPLv2+
 Group:		System/Kernel and hardware
@@ -44,7 +44,7 @@ multiple CPUs for enhanced performance.
 sed -i 's|EnvironmentFile=.*|EnvironmentFile=/etc/sysconfig/irqbalance|' misc/irqbalance.service
 
 %build
-%configure \
+%configure2_5x \
 	--disable-static \
 	--with-systemd
 
