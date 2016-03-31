@@ -39,7 +39,7 @@ multiple CPUs for enhanced performance.
 %prep
 %setup -q
 # (tpg) fix build with older systemd
-sed -i -e 's|AC_CHECK_LIB\(\[systemd\]|AC_CHECK_LIB\(\[libsystemd-journal\]|g' configure.ac
+sed -i -e "s#AC_CHECK_LIB(\[systemd\]#AC_CHECK_LIB(\[libsystemd-journal\]#g" configure.ac
 
 ./autogen.sh
 
