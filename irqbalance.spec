@@ -1,12 +1,13 @@
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
 Version:	1.1.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Kernel and hardware
 Url:		http://irqbalance.org/
 Source0:	https://codeload.github.com/Irqbalance/irqbalance/tar.gz/%{name}-%{version}.tar.gz
 Source1:	%{name}.sysconfig
+Patch0:		irqbalance-fix-aarch64.patch
 BuildRequires:	gccmakedep
 %ifnarch %{armx}
 BuildRequires:	numa-devel
@@ -30,6 +31,8 @@ multiple CPUs for enhanced performance.
 
 %prep
 %setup -q
+%apply_patches
+
 ./autogen.sh
 
 # (tpg) fix path
