@@ -40,9 +40,6 @@ multiple CPUs for enhanced performance.
 %setup -q
 # (tpg) fix build with older systemd
 sed -i -e "s#AC_CHECK_LIB(\[systemd\]#AC_CHECK_LIB(\[libsystemd-journal\]#g" configure.ac
-export CFLAGS="%{optflags} $(pkg-config --cflags libsystemd-journal) $(pkg-config --libs libsystemd-journal)"
-export CXXFLAGS="%{optflags} $(pkg-config --cflags libsystemd-journal) $(pkg-config --libs libsystemd-journal)"
-export LDFLAGS="%{ldflags} $(pkg-config --libs libsystemd-journal)"
 
 ./autogen.sh
 
@@ -54,7 +51,7 @@ sed -i 's|EnvironmentFile=.*|EnvironmentFile=/etc/sysconfig/irqbalance|' misc/ir
     --disable-static \
     --with-systemd
 
-%make
+%make CFLAGS="%{optflags} $(pkg-config --cflags libsystemd-journal) $(pkg-config --libs libsystemd-journal)" LDFLAGS="%{ldflags} $(pkg-config --libs libsystemd-journal)"
 
 %install
 install -D -p -m 0755 %{name} %{buildroot}%{_sbindir}/%{name}
