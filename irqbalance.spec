@@ -7,6 +7,9 @@ Group:		System/Kernel and hardware
 Url:		http://irqbalance.org/
 Source0:	https://codeload.github.com/Irqbalance/irqbalance/tar.gz/%{name}-%{version}.tar.gz
 Source1:	%{name}.sysconfig
+%ifarch %{armx}
+Patch0:		irqbalance-fix-aarch64.patch
+%endif
 BuildRequires:	gccmakedep
 %ifnarch %{armx}
 BuildRequires:	numa-devel
