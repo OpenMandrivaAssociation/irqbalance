@@ -1,7 +1,9 @@
+%define _disable_ld_no_undefined 1
+
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Kernel and hardware
 Url:		http://irqbalance.org/
@@ -13,7 +15,7 @@ BuildRequires:	numa-devel
 %endif
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libcap-ng)
-BuildRequires:	pkgconfig(libsystemd)
+BuildRequires:	pkgconfig(libsystemd-journal)
 
 %description
 irqbalance is a daemon that evenly distributes IRQ load across
@@ -31,6 +33,10 @@ multiple CPUs for enhanced performance.
 %prep
 %setup -q
 %apply_patches
+%if %mdvver < 3000000
+# (tpg) fix build with older systemd
+sed -i -e "s#AC_CHECK_LIB(\[systemd\]#AC_CHECK_LIB(\[libsystemd-journal\]#g" configure.ac
+%endif
 
 ./autogen.sh
 
@@ -38,11 +44,15 @@ multiple CPUs for enhanced performance.
 sed -i 's|EnvironmentFile=.*|EnvironmentFile=/etc/sysconfig/irqbalance|' misc/irqbalance.service
 
 %build
+%if %mdvver < 3000000
+%global optflags %optflags -std=c99
+%endif
+
 %configure \
 	--disable-static \
 	--with-systemd
 
-%make
+%make CFLAGS="%{optflags} $(pkg-config --cflags libsystemd-journal) $(pkg-config --libs libsystemd-journal)" LDFLAGS="%{ldflags} $(pkg-config --libs libsystemd-journal)"
 
 %install
 install -D -p -m 0755 %{name} %{buildroot}%{_sbindir}/%{name}
