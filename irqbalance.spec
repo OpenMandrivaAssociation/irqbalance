@@ -3,7 +3,7 @@
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
 Version:	1.2.0
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		System/Kernel and hardware
 Url:		http://irqbalance.org/
@@ -15,7 +15,11 @@ BuildRequires:	numa-devel
 %endif
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libcap-ng)
+%if %mdvver < 3000000
 BuildRequires:	pkgconfig(libsystemd-journal)
+%else
+BuildRequires:	pkgconfig(libsystemd)
+%endif
 
 %description
 irqbalance is a daemon that evenly distributes IRQ load across
@@ -52,7 +56,11 @@ sed -i 's|EnvironmentFile=.*|EnvironmentFile=/etc/sysconfig/irqbalance|' misc/ir
 	--disable-static \
 	--with-systemd
 
+%if %mdvver < 3000000
 %make CFLAGS="%{optflags} $(pkg-config --cflags libsystemd-journal) $(pkg-config --libs libsystemd-journal)" LDFLAGS="%{ldflags} $(pkg-config --libs libsystemd-journal)"
+%else
+%make
+%endif
 
 %install
 install -D -p -m 0755 %{name} %{buildroot}%{_sbindir}/%{name}
