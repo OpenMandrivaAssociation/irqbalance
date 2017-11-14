@@ -10,6 +10,7 @@ Url:		http://irqbalance.org/
 Source0:	https://codeload.github.com/Irqbalance/irqbalance/tar.gz/%{name}-%{version}.tar.gz
 Source1:	%{name}.sysconfig
 BuildRequires:	gccmakedep
+BuildRequires:	pkgconfig(ncursesw)
 %ifnarch %{armx}
 BuildRequires:	numa-devel
 %endif
