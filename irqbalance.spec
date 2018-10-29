@@ -20,6 +20,7 @@ BuildRequires:	pkgconfig(libcap-ng)
 BuildRequires:	pkgconfig(libsystemd-journal)
 %else
 BuildRequires:	pkgconfig(libsystemd)
+BuildRequires:	systemd-macros
 %endif
 
 %description
@@ -30,7 +31,7 @@ multiple CPUs for enhanced performance.
 %doc AUTHORS
 %{_mandir}/man1/*
 %{_sbindir}/*
-%{_systemunitdir}/%{name}.service
+%{_unitdir}/%{name}.service
 %config(noreplace) %{_sysconfdir}/sysconfig/*
 
 #----------------------------------------------------------------------------
@@ -64,7 +65,6 @@ sed -i 's|EnvironmentFile=.*|EnvironmentFile=/etc/sysconfig/irqbalance|' misc/ir
 %endif
 
 %install
-sed -ie "s|^EnvironmentFile=.*|EnvironmentFile=%{_sysconfdir}/sysconfig/%{name}|g" misc/irqbalance.service
 install -D -p -m 0755 %{name} %{buildroot}%{_sbindir}/%{name}
 install -D -p -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 install -d %{buildroot}%{_mandir}/man1/
