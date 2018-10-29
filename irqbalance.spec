@@ -2,7 +2,7 @@
 
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
-Version:	1.4.0
+Version:	1.5.0
 Release:	1
 License:	GPLv2+
 Group:		System/Kernel and hardware
@@ -60,12 +60,13 @@ sed -i 's|EnvironmentFile=.*|EnvironmentFile=/etc/sysconfig/irqbalance|' misc/ir
 %if %mdvver < 3000000
 %make CFLAGS="%{optflags} $(pkg-config --cflags libsystemd-journal) $(pkg-config --libs libsystemd-journal)" LDFLAGS="%{ldflags} $(pkg-config --libs libsystemd-journal)"
 %else
-%make
+%make_build
 %endif
 
 %install
+sed -ie "s|^EnvironmentFile=.*|EnvironmentFile=%{_sysconfdir}/sysconfig/%{name}|g" misc/irqbalance.service
 install -D -p -m 0755 %{name} %{buildroot}%{_sbindir}/%{name}
 install -D -p -m 0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 install -d %{buildroot}%{_mandir}/man1/
 install -p -m 0644 ./irqbalance.1 %{buildroot}%{_mandir}/man1/
-install -D -p -m 0644 ./misc/irqbalance.service %{buildroot}%{_systemunitdir}/irqbalance.service
+install -D -p -m 0644 ./misc/irqbalance.service %{buildroot}%{_unitdir}/irqbalance.service
