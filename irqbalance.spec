@@ -11,7 +11,7 @@ Source0:	https://codeload.github.com/Irqbalance/irqbalance/tar.gz/%{name}-%{vers
 Source1:	%{name}.sysconfig
 BuildRequires:	gccmakedep
 BuildRequires:	pkgconfig(ncursesw)
-%ifnarch %{armx}
+%ifnarch %{armx} riscv64
 BuildRequires:	numa-devel
 %endif
 BuildRequires:	pkgconfig(glib-2.0)
