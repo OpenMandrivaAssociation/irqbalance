@@ -2,8 +2,8 @@
 
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
-Version:	1.5.0
-Release:	2
+Version:	1.6.0
+Release:	1
 License:	GPLv2+
 Group:		System/Kernel and hardware
 Url:		http://irqbalance.org/
@@ -37,8 +37,8 @@ multiple CPUs for enhanced performance.
 #----------------------------------------------------------------------------
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
+
 %if %mdvver < 3000000
 # (tpg) fix build with older systemd
 sed -i -e "s#AC_CHECK_LIB(\[systemd\]#AC_CHECK_LIB(\[libsystemd-journal\]#g" configure.ac
