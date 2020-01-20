@@ -1,0 +1,2 @@
+# Create the SOCKET_TMPFS directory (based on https://github.com/Irqbalance/irqbalance/commit/f5ca2eb481ac76b799c8efef5a7b7469bb368fd5)
+d /run/irqbalance 0755 root root -
