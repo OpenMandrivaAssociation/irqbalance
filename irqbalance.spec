@@ -10,7 +10,6 @@ Url:		http://irqbalance.org/
 Source0:	https://codeload.github.com/Irqbalance/irqbalance/tar.gz/%{name}-%{version}.tar.gz
 Source1:	%{name}.sysconfig
 Source2:	%{name}.tmpfiles
-Patch0:		https://raw.githubusercontent.com/clearlinux-pkgs/irqbalance/master/0001-Run-irqbalance-as-oneshot-by-default-without-env.patch
 BuildRequires:	gccmakedep
 BuildRequires:	pkgconfig(ncursesw)
 %ifnarch %{armx} riscv64
@@ -38,7 +37,6 @@ multiple CPUs for enhanced performance.
 
 %prep
 %autosetup -p1
-
 ./autogen.sh
 
 # (tpg) fix path
