@@ -18,7 +18,7 @@ BuildRequires:	numa-devel
 BuildRequires:	pkgconfig(glib-2.0)
 BuildRequires:	pkgconfig(libcap-ng)
 BuildRequires:	pkgconfig(libsystemd)
-BuildRequires:	systemd-macros
+BuildRequires:	systemd-rpm-macros
 
 %description
 irqbalance is a daemon that evenly distributes IRQ load across
