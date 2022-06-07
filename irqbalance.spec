@@ -2,7 +2,7 @@
 
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
-Version:	1.8.0
+Version:	1.9.0
 Release:	1
 License:	GPLv2+
 Group:		System/Kernel and hardware
@@ -35,7 +35,7 @@ multiple CPUs for enhanced performance.
 
 %files
 %doc AUTHORS
-%{_mandir}/man1/*
+%doc %{_mandir}/man1/*
 %{_sbindir}/*
 %{_presetdir}/86-%{name}.preset
 %{_tmpfilesdir}/%{name}.conf
