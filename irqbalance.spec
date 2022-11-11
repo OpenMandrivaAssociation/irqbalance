@@ -2,7 +2,7 @@
 
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
-Version:	1.9.1
+Version:	1.9.2
 Release:	1
 License:	GPLv2+
 Group:		System/Kernel and hardware
