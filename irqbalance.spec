@@ -2,12 +2,12 @@
 
 Summary:	Daemon to balance irq's across multiple CPUs
 Name:		irqbalance
-Version:	1.9.3
+Version:	1.9.4
 Release:	1
 License:	GPLv2+
 Group:		System/Kernel and hardware
-Url:		http://irqbalance.org/
-Source0:	https://codeload.github.com/Irqbalance/irqbalance/tar.gz/%{name}-%{version}.tar.gz
+Url:		https://irqbalance.org/
+Source0:	https://github.com/Irqbalance/irqbalance/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:	%{name}.sysconfig
 Source2:	%{name}.tmpfiles
 BuildRequires:	gccmakedep
