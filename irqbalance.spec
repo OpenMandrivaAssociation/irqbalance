@@ -10,6 +10,10 @@ Url:		https://irqbalance.org/
 Source0:	https://github.com/Irqbalance/irqbalance/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:	%{name}.sysconfig
 Source2:	%{name}.tmpfiles
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:	gccmakedep
 BuildRequires:	pkgconfig(ncursesw)
 %ifnarch %{armx} riscv64
