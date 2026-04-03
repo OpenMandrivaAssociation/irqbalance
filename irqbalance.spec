@@ -16,6 +16,7 @@ BuildRequires:	automake
 BuildRequires:	slibtool
 BuildRequires:	gccmakedep
 BuildRequires:	pkgconfig(ncursesw)
+BuildRequires:	libtool-autoconf-macros
 %ifnarch %{armx} riscv64
 BuildRequires:	numa-devel
 %endif
