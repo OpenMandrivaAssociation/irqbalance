@@ -1,0 +1,24 @@
+diff -up irqbalance-1.9.5/misc/irqbalance.service.in.1~ irqbalance-1.9.5/misc/irqbalance.service.in
+--- irqbalance-1.9.5/misc/irqbalance.service.in.1~	2025-12-08 13:51:25.000000000 +0100
++++ irqbalance-1.9.5/misc/irqbalance.service.in	2026-04-03 02:03:57.070002127 +0200
+@@ -6,10 +6,9 @@ ConditionVirtualization=!container
+ ConditionCPUs=>1
+ 
+ [Service]
+-EnvironmentFile=@pkgconfdir@/irqbalance.env
+ EnvironmentFile=-@usrconfdir@/irqbalance
+ ExecStart=/usr/sbin/irqbalance $IRQBALANCE_ARGS
+-CapabilityBoundingSet=CAP_SETPCAP
++CapabilityBoundingSet=CAP_SETPCAP CAP_NET_ADMIN
+ NoNewPrivileges=yes
+ ProtectSystem=strict
+ ReadOnlyPaths=/
+@@ -34,7 +33,7 @@ RestrictRealtime=yes
+ RestrictSUIDSGID=yes
+ RemoveIPC=yes
+ PrivateMounts=yes
+-SystemCallFilter=@cpu-emulation @privileged @system-service
++SystemCallFilter=@cpu-emulation @privileged @system-service @network-io sendmsg recvmsg
+ SystemCallFilter=~@clock @module @mount @obsolete @raw-io @reboot @resources @swap
+ SystemCallErrorNumber=EPERM
+ SystemCallArchitectures=native
