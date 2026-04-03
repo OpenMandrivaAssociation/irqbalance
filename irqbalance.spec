@@ -13,6 +13,7 @@ Source1:	%{name}.sysconfig
 Source2:	%{name}.tmpfiles
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	make
 BuildRequires:	slibtool
 BuildRequires:	gccmakedep
 BuildRequires:	pkgconfig(ncursesw)
